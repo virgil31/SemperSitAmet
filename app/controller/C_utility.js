@@ -3,7 +3,7 @@ Ext.define('SemperSitAmet.controller.C_utility', {
 
     config: {
         control:{
-
+            
         }
     },
 

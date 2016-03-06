@@ -67,8 +67,8 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                             },
                                             {                                                
                                                 xtype: 'button',
-                                                text: 'Verifica',
-                                                ui: 'confirm-forward',
+                                                text: 'Verifica Connessiones',
+                                                ui: 'action',   //confirm
                                                 margin: '20 0 0 0',
                                                 listeners:{
 
@@ -83,7 +83,7 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                         xtype: 'button',
                                                                         text: 'Alert Test',
                                                                         handler: function(){
-                                                                            Ext.Msg.alert("asd","asd: ");
+                                                                            Ext.Msg.alert("asd","asd");
                                                                         }
                                                                     }
                                                                 ]

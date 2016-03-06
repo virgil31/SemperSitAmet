@@ -13,7 +13,7 @@ Ext.define('SemperSitAmet.controller.C_welcome', {
         }
 
 
-    },
+    }
 
     /////////////////////////////////////////    
 
