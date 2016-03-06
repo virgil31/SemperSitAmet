@@ -73,22 +73,37 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                 listeners:{
 
                                                     tap: function(btn){
-                                                        btn.up("navigationview").push(
+                                                        btn.up("viewport").mask({
+                                                            xtype: 'loadmask',
+                                                            message: 'Verifica in corso'
+                                                        });
+
+                                                        //simulo 3 secondi di chiamata ajax
+                                                        
+                                                        setTimeout(function(){
+                                                            btn.up("viewport").unmask();
+
+                                                            btn.up("navigationview").push(
                                                             /////////////////////////////////////////////////////////////////////////////
                                                             /////////////////////////////////////////////////////////////////////////////
-                                                            {
-                                                                title: 'Third',
-                                                                items:[
-                                                                    {
-                                                                        xtype: 'button',
-                                                                        text: 'Alert Test',
-                                                                        handler: function(){
-                                                                            Ext.Msg.alert("asd","asd");
+                                                                {
+                                                                    title: 'Perfetto!',
+                                                                    items:[
+                                                                        {
+                                                                            xtype: 'button',
+                                                                            text: 'Alert Test',
+                                                                            handler: function(){
+                                                                                Ext.Msg.alert("asd","asd");
+                                                                            }
                                                                         }
-                                                                    }
-                                                                ]
-                                                            }
-                                                        )
+                                                                    ]
+                                                                }
+                                                            )
+                                                        },3000);
+                                                        
+
+
+                                                        
                                                     }
 
                                                 }

@@ -58,7 +58,7 @@ Ext.application({
             xtype: 'welcome'    // welcome, main
         });
 
-        //SemperSitAmet.app.getController("C_utility").updateUiStates();
+        SemperSitAmet.app.getController("C_utility").updateUiStates();
     },
 
     onUpdated: function() {
@@ -75,3 +75,14 @@ Ext.application({
 
 
 });
+
+
+/*
+Nel caso in cui la build production dias Unexpected Identifier su app.js :
+
+1-Open Chrome's dev tools
+2-Goto to the resources tab
+3-Expand local storage
+4-Select your web app's url
+5-Delete all entries
+*/
