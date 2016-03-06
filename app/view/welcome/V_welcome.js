@@ -67,7 +67,7 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                             },
                                             {                                                
                                                 xtype: 'button',
-                                                text: 'Verifica Connessiones',
+                                                text: 'Verifica Connessione',
                                                 ui: 'action',   //confirm
                                                 margin: '20 0 0 0',
                                                 listeners:{
