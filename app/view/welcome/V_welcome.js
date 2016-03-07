@@ -78,8 +78,8 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                             message: 'Verifica in corso'
                                                         });
 
-                                                        //simulo 3 secondi di chiamata ajax
                                                         
+                                                        //simulo 3 secondi di chiamata ajax                                                        
                                                         setTimeout(function(){
                                                             btn.up("viewport").unmask();
 
@@ -100,10 +100,7 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                 }
                                                             )
                                                         },3000);
-                                                        
-
-
-                                                        
+                                                                                                                
                                                     }
 
                                                 }

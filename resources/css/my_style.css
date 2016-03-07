@@ -1,0 +1,9 @@
+.x-mask .x-mask-inner {
+	background: #03111A;
+	border-radius: 5px;
+    border: 0.15em solid #1985d0;
+}
+
+.x-mask .x-mask-message {
+	color: #ABCAE0;
+}
