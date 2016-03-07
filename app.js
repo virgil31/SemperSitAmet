@@ -50,6 +50,9 @@ Ext.application({
         //per evitare il bug degli Ext.Msg.alert che non si chiudono
         Ext.Msg.defaultAllowedConfig.showAnimation = false;
 
+        //per evitare che Ajax.request faccia due richieste (la prima sempre con metodo OPTIONS)
+        Ext.Ajax.setUseDefaultXhrHeader(false);
+
 
         // Initialize the main view
         //Ext.Viewport.add(Ext.create('SemperSitAmet.view.Main'));
@@ -58,7 +61,8 @@ Ext.application({
             xtype: 'welcome'    // welcome, main
         });
 
-        SemperSitAmet.app.getController("C_utility").updateUiStates();
+        SemperSitAmet.app.getController("C_utility").updateUiStates();   
+        
     },
 
     onUpdated: function() {
