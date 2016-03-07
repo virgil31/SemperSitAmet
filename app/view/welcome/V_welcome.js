@@ -19,7 +19,7 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                 items: [
                     {
                         xtype: 'image',
-                        src: "img/logo.png",
+                        src: "resources/images/logo.png",
                         width: 150,
                         height: 150,
                         margin: '10 0 0 0',
@@ -53,7 +53,7 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                         items:[
                                             {
                                                 xtype: 'image',
-                                                src: "img/connect_arduino.png",
+                                                src: "resources/images/connect_arduino.png",
                                                 width: 320,
                                                 height: 150,
                                                 margin: '10 0 0 0'
@@ -96,7 +96,7 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                         items:[
                                                                             {
                                                                                 xtype: 'image',
-                                                                                src: "img/icon_ok.png",
+                                                                                src: "resources/images/icon_ok.png",
                                                                                 width: 250,
                                                                                 height: 250
                                                                             },

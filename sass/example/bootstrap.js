@@ -2508,7 +2508,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "SemperSitAmet.controller.C_utility": [],
   "SemperSitAmet.controller.C_welcome": [],
   "SemperSitAmet.view.main.V_main": [],
-  "SemperSitAmet.view.welcome.V_first": [],
   "SemperSitAmet.view.welcome.V_welcome": []
 });
 
@@ -3232,9 +3231,6 @@ Ext.ClassManager.addNameAliasMappings({
   "SemperSitAmet.controller.C_welcome": [],
   "SemperSitAmet.view.main.V_main": [
     "widget.main"
-  ],
-  "SemperSitAmet.view.welcome.V_first": [
-    "widget.welcome_first"
   ],
   "SemperSitAmet.view.welcome.V_welcome": [
     "widget.welcome"
