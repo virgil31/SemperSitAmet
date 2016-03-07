@@ -14,19 +14,15 @@ Ext.define('SemperSitAmet.controller.C_utility', {
             url: 'http://192.168.1.220/?action=read_actual_states',
             timeout: 5000,
             success: function(response){
-                Ext.Msg.alert("TEST CONNECTION","OK");
-
                 var risposta = Ext.JSON.decode(response.responseText),
                     led7 = risposta["result"]["7"],
                     led8 = risposta["result"]["8"];
 
                 Ext.ComponentQuery.query("main togglefield[name=led_verde]")[0].setValue(led7);
-                Ext.ComponentQuery.query("main togglefield[name=led_rosso]")[0].setValue(led8);
-
-                
+                Ext.ComponentQuery.query("main togglefield[name=led_rosso]")[0].setValue(led8);                
             },
             failure: function(){
-                Ext.Msg.alert("TEST CONNECTION","Non connesso ad Arduino");
+                Ext.Msg.alert("ERROR CONNECTION","Non connesso ad Arduino");
             }
         });
     },

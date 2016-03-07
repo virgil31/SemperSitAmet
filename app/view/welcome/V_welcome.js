@@ -4,6 +4,8 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
 
     config: {
 
+        defaultBackButtonText: "Indietro",
+
 
         items: [
             /////////////////////////////////////////////////////////////////////////////
@@ -106,7 +108,14 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                                 ui: 'confirm',
                                                                                 margin: '30 0 0 0',
                                                                                 handler: function(){
-                                                                                    Ext.Msg.alert("asd","asd");
+                                                                                    btn.up("viewport").mask({
+                                                                                        xtype: 'loadmask',
+                                                                                        message: 'Cominciamo...'
+                                                                                    });
+                                                                                    setTimeout(function(){
+                                                                                        btn.up("viewport").unmask();
+                                                                                        Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem("main");
+                                                                                    },3000);    
                                                                                 }
                                                                             }
                                                                         ]

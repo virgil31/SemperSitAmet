@@ -57,11 +57,30 @@ Ext.application({
         // Initialize the main view
         //Ext.Viewport.add(Ext.create('SemperSitAmet.view.Main'));
 
+        /*
         Ext.Viewport.add({
             xtype: 'welcome'    // welcome, main
         });
+        */
 
-        //SemperSitAmet.app.getController("C_utility").updateUiStates();   
+        Ext.Viewport.add({
+            xtype: 'panel',
+            name: 'card',
+            layout: {
+                type: 'card',
+                animation: 'flip'
+            },
+            items:[
+                {
+                    xtype: 'welcome'
+                },
+                {
+                    xtype: 'main'
+                }
+            ]
+        });
+
+        SemperSitAmet.app.getController("C_utility").updateUiStates();   
         
     },
 

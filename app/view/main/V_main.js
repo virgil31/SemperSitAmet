@@ -36,7 +36,7 @@ Ext.define('SemperSitAmet.view.main.V_main', {
 
                     {
                         xtype: 'image',
-                        src: "img/logo.png",
+                        src: "resources/images/logo.png",
                         width: 200,
                         height: 200,
                         margin: '10 0 0 0'
