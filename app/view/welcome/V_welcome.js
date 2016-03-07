@@ -53,16 +53,13 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                         items:[
                                             {
                                                 xtype: 'image',
-                                                //src: "img/logo.png",
-                                                width: 250,
+                                                src: "img/connect_arduino.png",
+                                                width: 320,
                                                 height: 150,
-                                                margin: '10 0 0 0',
-                                                style: {
-                                                    backgroundColor: "blue"
-                                                }
+                                                margin: '10 0 0 0'
                                             },
                                             {
-                                                html: "<div style='text-align: center;'>Arduino viene distribuito con l'indirizzo predefinito 192.168.1.220 assicurarsi quindi di trovarsi nella sua stessa rete e che tale indirizzo non sia già occupato da un altro dispositivo.<br><br><br>Usa il pulsante di seguito per effettuare un test veloce.</div>",
+                                                html: "<div style='text-align: center;'>Arduino viene distribuito con l'indirizzo predefinito 192.168.1.220. Assicurarsi quindi di trovarsi sulla sua stessa rete e che tale indirizzo non sia già occupato da un altro dispositivo.<br><br><br>Collegare Arduino alla rete adsl ed elettrica. Usare quindi il pulsante di seguito per effettuare un test veloce.</div>",
                                                 margin: '20 0 0 0'
                                             },
                                             {                                                
@@ -89,10 +86,25 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                 /////////////////////////////////////////////////////////////////////////////
                                                                     {
                                                                         title: 'Perfetto!',
+                                                                        scrollable: true,
+                                                                        padding: 20,
+                                                                        layout: {
+                                                                            type: 'vbox',
+                                                                            align: 'center',
+                                                                            pack: 'center'
+                                                                        },
                                                                         items:[
                                                                             {
+                                                                                xtype: 'image',
+                                                                                src: "img/icon_ok.png",
+                                                                                width: 250,
+                                                                                height: 250
+                                                                            },
+                                                                            {
                                                                                 xtype: 'button',
-                                                                                text: 'Alert Test',
+                                                                                text: 'Inizia subito!',
+                                                                                ui: 'confirm',
+                                                                                margin: '30 0 0 0',
                                                                                 handler: function(){
                                                                                     Ext.Msg.alert("asd","asd");
                                                                                 }
@@ -105,47 +117,18 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                 btn.up("viewport").unmask();
                                                                 Ext.Msg.alert("Attenzione","Non connesso ad Arduino!");
                                                             }
-                                                        });
-
-                                                        /*
-                                                        //simulo 3 secondi di chiamata ajax                                                        
-                                                        setTimeout(function(){
-                                                            btn.up("viewport").unmask();
-
-                                                            btn.up("navigationview").push(
-                                                            /////////////////////////////////////////////////////////////////////////////
-                                                            /////////////////////////////////////////////////////////////////////////////
-                                                                {
-                                                                    title: 'Perfetto!',
-                                                                    items:[
-                                                                        {
-                                                                            xtype: 'button',
-                                                                            text: 'Alert Test',
-                                                                            handler: function(){
-                                                                                Ext.Msg.alert("asd","asd");
-                                                                            }
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            )
-                                                        },3000);
-                                                        */                                  
+                                                        });                                                                                        
                                                     }
-
                                                 }
                                             }
                                         ]
-
                                     }
                                 );
                             }
-                        }
-                        
+                        }                        
                     }
                 ]
             }
-
-
         ]
     }
 });
