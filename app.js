@@ -61,7 +61,7 @@ Ext.application({
             xtype: 'welcome'    // welcome, main
         });
 
-        SemperSitAmet.app.getController("C_utility").updateUiStates();   
+        //SemperSitAmet.app.getController("C_utility").updateUiStates();   
         
     },
 

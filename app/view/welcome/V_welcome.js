@@ -78,7 +78,36 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                             message: 'Verifica in corso'
                                                         });
 
-                                                        
+                                                        Ext.Ajax.request({
+                                                            url: 'http://192.168.1.220/?action=read_actual_states',
+                                                            timeout: 5000,
+                                                            success: function(response){
+                                                                btn.up("viewport").unmask();
+
+                                                                btn.up("navigationview").push(
+                                                                /////////////////////////////////////////////////////////////////////////////
+                                                                /////////////////////////////////////////////////////////////////////////////
+                                                                    {
+                                                                        title: 'Perfetto!',
+                                                                        items:[
+                                                                            {
+                                                                                xtype: 'button',
+                                                                                text: 'Alert Test',
+                                                                                handler: function(){
+                                                                                    Ext.Msg.alert("asd","asd");
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                )
+                                                            },
+                                                            failure: function(){
+                                                                btn.up("viewport").unmask();
+                                                                Ext.Msg.alert("Attenzione","Non connesso ad Arduino!");
+                                                            }
+                                                        });
+
+                                                        /*
                                                         //simulo 3 secondi di chiamata ajax                                                        
                                                         setTimeout(function(){
                                                             btn.up("viewport").unmask();
@@ -100,7 +129,7 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                 }
                                                             )
                                                         },3000);
-                                                                                                                
+                                                        */                                  
                                                     }
 
                                                 }
