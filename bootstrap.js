@@ -21,7 +21,7 @@ Ext.Loader.addClassPathMappings({
   "Ext.Element-static": "touch/src/dom/Element.static.js",
   "Ext.Element-style": "touch/src/dom/Element.style.js",
   "Ext.Element-traversal": "touch/src/dom/Element.traversal.js",
-  "Ext.cmd": "../../../../Users/Luca/bin/Sencha/Cmd/6.1.0.65/plugins/src",
+  "Ext.cmd": "../../../../../Users/cerini/bin/Sencha/Cmd/6.1.0.65/plugins/src",
   "Ext.core.DomQuery": "touch/src/dom/Query.js",
   "Ext.device.Purchases.Product": "touch/src/device/purchases/Sencha.js",
   "Ext.device.filesystem.DirectoryEntry": "touch/src/device/filesystem/Sencha.js",
@@ -662,6 +662,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "SemperSitAmet.controller.C_utility": [],
   "SemperSitAmet.controller.C_welcome": [],
   "SemperSitAmet.view.main.V_main": [],
+  "SemperSitAmet.view.main.V_settings": [],
   "SemperSitAmet.view.welcome.V_welcome": []
 });
 
@@ -1385,6 +1386,9 @@ Ext.ClassManager.addNameAliasMappings({
   "SemperSitAmet.controller.C_welcome": [],
   "SemperSitAmet.view.main.V_main": [
     "widget.main"
+  ],
+  "SemperSitAmet.view.main.V_settings": [
+    "widget.settings"
   ],
   "SemperSitAmet.view.welcome.V_welcome": [
     "widget.welcome"

@@ -6,7 +6,6 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
 
         defaultBackButtonText: "Indietro",
 
-
         items: [
             /////////////////////////////////////////////////////////////////////////////
             /////////////////////////////////////////////////////////////////////////////
@@ -46,6 +45,7 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                     /////////////////////////////////////////////////////////////////////////////
                                     {
                                         title: 'Connessione',
+                                        //styleHtmlContent: true,
                                         scrollable: true,
                                         padding: 20,
                                         layout: {
@@ -61,10 +61,10 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                 margin: '10 0 0 0'
                                             },
                                             {
-                                                html: "<div style='text-align: center;'>Arduino viene distribuito con l'indirizzo predefinito 192.168.1.220. Assicurarsi quindi di trovarsi sulla sua stessa rete e che tale indirizzo non sia già occupato da un altro dispositivo.<br><br>Collegare Arduino alla rete adsl ed elettrica. Usare quindi il pulsante di seguito per effettuare un test veloce.</div>",
+                                                html: "<div style='text-align: center;'>Arduino viene distribuito con l'indirizzo predefinito <b>192.168.1.220</b>. Assicurarsi quindi di trovarsi sulla sua stessa rete e che tale indirizzo non sia già occupato da un altro dispositivo.<br><br>Collegare Arduino alla rete adsl ed elettrica. Usare quindi il pulsante di seguito per effettuare un test veloce.</div>",
                                                 margin: '20 0 0 0'
                                             },
-                                            {                                                
+                                            {
                                                 xtype: 'button',
                                                 text: 'Verifica Connessione',
                                                 ui: 'action',   //confirm
@@ -114,8 +114,9 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                                     });
                                                                                     setTimeout(function(){
                                                                                         btn.up("viewport").unmask();
+                                                                                        SemperSitAmet.app.getController("C_utility").updateUiStates();
                                                                                         Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem("main");
-                                                                                    },3000);    
+                                                                                    },3000);
                                                                                 }
                                                                             }
                                                                         ]
@@ -124,9 +125,52 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                             },
                                                             failure: function(){
                                                                 btn.up("viewport").unmask();
-                                                                Ext.Msg.alert("Attenzione","Non connesso ad Arduino!");
+                                                                //Ext.Msg.alert("Attenzione","Non connesso ad Arduino!");
+                                                                Ext.Msg.confirm("Attenzione", "Non connesso ad Arduino! Continuare lo stesso?", function(buttonId){
+                                                                    if(buttonId == "yes"){
+                                                                        btn.up("navigationview").push(
+                                                                          /////////////////////////////////////////////////////////////////////////////
+                                                                          /////////////////////////////////////////////////////////////////////////////
+                                                                            {
+                                                                                title: 'Perfetto!',
+                                                                                scrollable: true,
+                                                                                padding: 20,
+                                                                                layout: {
+                                                                                    type: 'vbox',
+                                                                                    align: 'center',
+                                                                                    pack: 'center'
+                                                                                },
+                                                                                items:[
+                                                                                    {
+                                                                                        xtype: 'image',
+                                                                                        src: "resources/images/icon_ok.png",
+                                                                                        width: 250,
+                                                                                        height: 250
+                                                                                    },
+                                                                                    {
+                                                                                        xtype: 'button',
+                                                                                        text: 'Inizia subito!',
+                                                                                        ui: 'confirm',
+                                                                                        margin: '30 0 0 0',
+                                                                                        handler: function(){
+                                                                                            btn.up("viewport").mask({
+                                                                                                xtype: 'loadmask',
+                                                                                                message: 'Cominciamo...'
+                                                                                            });
+                                                                                            setTimeout(function(){
+                                                                                                btn.up("viewport").unmask();
+                                                                                                SemperSitAmet.app.getController("C_utility").updateUiStates();
+                                                                                                Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem(1);
+                                                                                            },3000);
+                                                                                        }
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        )
+                                                                    }
+                                                                });
                                                             }
-                                                        });                                                                                        
+                                                        });
                                                     }
                                                 }
                                             }
@@ -134,12 +178,10 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                     }
                                 );
                             }
-                        }                        
+                        }
                     }
                 ]
             }
         ]
     }
 });
-
-

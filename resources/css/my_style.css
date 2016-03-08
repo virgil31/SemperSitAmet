@@ -7,3 +7,7 @@
 .x-mask .x-mask-message {
 	color: #ABCAE0;
 }
+
+.x-mask.x-has-message .x-loading-spinner-outer {
+    height: 80px;
+}
