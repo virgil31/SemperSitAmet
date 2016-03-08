@@ -14,7 +14,12 @@ Ext.application({
     name: 'SemperSitAmet',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Ext.TitleBar',
+        'Ext.Img',
+        'Ext.Ajax',
+        'Ext.field.Toggle',
+        'Ext.List'
     ],
 
     controllers:[
@@ -42,7 +47,7 @@ Ext.application({
         '1496x2048': 'resources/startup/1496x2048.png'
     },
 
-    launch: function() {       
+    launch: function() {
 
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
@@ -75,13 +80,23 @@ Ext.application({
                     xtype: 'welcome'
                 },
                 {
-                    xtype: 'main'
+                    xtype: 'panel',
+                    name: 'main_card',
+                    layout: {
+                        type: 'card',
+                        animation: 'flip'
+                    },
+                    items: [
+                        {
+                            xtype: 'main'
+                        },
+                        {
+                            xtype: 'settings'
+                        }
+                    ]
                 }
             ]
         });
-
-        SemperSitAmet.app.getController("C_utility").updateUiStates();   
-        
     },
 
     onUpdated: function() {
@@ -99,6 +114,10 @@ Ext.application({
 
 });
 
+/*
+ICONE
+http://pictos.cc/classic/font
+*/
 
 /*
 Nel caso in cui la build production dias Unexpected Identifier su app.js :
