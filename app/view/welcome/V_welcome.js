@@ -20,13 +20,10 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                 items: [
                     {
                         xtype: 'image',
-                        src: "resources/images/logo.png",
+                        src: "resources/images/logo_arduino.png",
                         width: 150,
                         height: 150,
-                        margin: '10 0 0 0',
-                        style: {
-                            backgroundColor: "white"
-                        }
+                        margin: '10 0 0 0'
                     },
                     {
                         html: "<div style='text-align: center;'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>",

@@ -2505,10 +2505,14 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.viewport.WP"
   ],
   "SemperSitAmet.controller.C_main": [],
+  "SemperSitAmet.controller.C_settings": [],
   "SemperSitAmet.controller.C_utility": [],
   "SemperSitAmet.controller.C_welcome": [],
   "SemperSitAmet.view.main.V_main": [],
-  "SemperSitAmet.view.main.V_settings": [],
+  "SemperSitAmet.view.settings.V_about": [],
+  "SemperSitAmet.view.settings.V_profiles": [],
+  "SemperSitAmet.view.settings.V_settings": [],
+  "SemperSitAmet.view.settings.V_tester": [],
   "SemperSitAmet.view.welcome.V_welcome": []
 });
 
@@ -3228,13 +3232,23 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
   "SemperSitAmet.controller.C_main": [],
+  "SemperSitAmet.controller.C_settings": [],
   "SemperSitAmet.controller.C_utility": [],
   "SemperSitAmet.controller.C_welcome": [],
   "SemperSitAmet.view.main.V_main": [
     "widget.main"
   ],
-  "SemperSitAmet.view.main.V_settings": [
+  "SemperSitAmet.view.settings.V_about": [
+    "widget.settings_about"
+  ],
+  "SemperSitAmet.view.settings.V_profiles": [
+    "widget.settings_profiles"
+  ],
+  "SemperSitAmet.view.settings.V_settings": [
     "widget.settings"
+  ],
+  "SemperSitAmet.view.settings.V_tester": [
+    "widget.settings_tester"
   ],
   "SemperSitAmet.view.welcome.V_welcome": [
     "widget.welcome"

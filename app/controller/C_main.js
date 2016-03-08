@@ -5,8 +5,7 @@ Ext.define('SemperSitAmet.controller.C_main', {
 
 
         views: [
-            'main.V_main',
-            'main.V_settings'
+            'main.V_main'
         ],
 
         control:{

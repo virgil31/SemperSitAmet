@@ -25,7 +25,8 @@ Ext.application({
     controllers:[
         'C_utility',
         'C_welcome',
-        'C_main'
+        'C_main',
+        'C_settings'
     ],
 
 
@@ -57,16 +58,6 @@ Ext.application({
 
         //per evitare che Ajax.request faccia due richieste (la prima sempre con metodo OPTIONS)
         Ext.Ajax.setUseDefaultXhrHeader(false);
-
-
-        // Initialize the main view
-        //Ext.Viewport.add(Ext.create('SemperSitAmet.view.Main'));
-
-        /*
-        Ext.Viewport.add({
-            xtype: 'welcome'    // welcome, main
-        });
-        */
 
         Ext.Viewport.add({
             xtype: 'panel',
