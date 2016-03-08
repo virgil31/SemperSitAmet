@@ -112,7 +112,7 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                                     setTimeout(function(){
                                                                                         btn.up("viewport").unmask();
                                                                                         SemperSitAmet.app.getController("C_utility").updateUiStates();
-                                                                                        Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem("main");
+                                                                                        Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem(1);
                                                                                     },3000);
                                                                                 }
                                                                             }
