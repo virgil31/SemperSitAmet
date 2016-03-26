@@ -75,13 +75,13 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                 xtype: 'loadmask',
                                                                 message: 'Verifica in corso'
                                                             });
-
+                                                            Ext.Ajax.abortAll();
                                                             var ip_trovato = false;
                                                             var ip_testati = 0;
                                                             for(var i = 0; i<=255; i++){
                                                                 Ext.Ajax.request({
                                                                     url: 'http://'+subnet+'.'+i+'/?action=read_actual_states',
-                                                                    timeout: 10000,
+                                                                    timeout: 60000,
                                                                     failure: function(){
                                                                         ip_testati++;
                                                                         if(ip_testati==256 && !ip_trovato){
