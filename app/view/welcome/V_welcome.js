@@ -69,75 +69,42 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                 listeners:{
 
                                                     tap: function(btn){
-                                                        btn.up("viewport").mask({
-                                                            xtype: 'loadmask',
-                                                            message: 'Verifica in corso'
-                                                        });
 
-                                                        var ip_trovato = false;
-                                                        for(var i = 0; i<256 || ip_trovato; i++){
-                                                            Ext.Ajax.request({
-                                                                url: 'http://192.168.1.'+i+'/?action=read_actual_states',
-                                                                timeout: 2000,
-                                                                success: function(response){
-                                                                    var risposta = Ext.JSON.decode(response.responseText);
-                                                                    if(risposta["success"]){
-                                                                        var ip_da_salvare = response.request.options.url.replace("http://","").replace("/?action=read_actual_states","");
+                                                        Ext.Msg.prompt('Subnet', 'Inserire la Subnet dove si trova Arduino', function(btnId,subnet) {
+                                                            btn.up("viewport").mask({
+                                                                xtype: 'loadmask',
+                                                                message: 'Verifica in corso'
+                                                            });
 
-                                                                        //salvo ip nel localStorage
-                                                                        window.localStorage.setItem("arduino_ip",ip_da_salvare);
+                                                            var ip_trovato = false;
+                                                            var ip_testati = 0;
+                                                            for(var i = 0; i<=255; i++){
+                                                                Ext.Ajax.request({
+                                                                    url: 'http://'+subnet+'.'+i+'/?action=read_actual_states',
+                                                                    timeout: 10000,
+                                                                    failure: function(){
+                                                                        ip_testati++;
+                                                                        if(ip_testati==256 && !ip_trovato){
+                                                                            btn.up("viewport").unmask();
+                                                                            Ext.Msg.alert("Attenzione!","Testati tutti gli ip della subnet "+subnet+" senza successo.");
+                                                                        }
+                                                                    },
+                                                                    success: function(response){
+                                                                        ip_testati++;
+                                                                        var risposta = Ext.JSON.decode(response.responseText);
+                                                                        if(risposta["success"]){
+                                                                            ip_trovato = true;
+                                                                            Ext.Ajax.abortAll();
+                                                                            var ip_da_salvare = response.request.options.url.replace("http://","").replace("/?action=read_actual_states","");
 
-                                                                        btn.up("viewport").unmask();
+                                                                            //salvo ip nel localStorage
+                                                                            window.localStorage.setItem("arduino_ip",ip_da_salvare);
 
-                                                                        btn.up("navigationview").push(
-                                                                        /////////////////////////////////////////////////////////////////////////////
-                                                                        /////////////////////////////////////////////////////////////////////////////
-                                                                            {
-                                                                                title: 'Perfetto!',
-                                                                                scrollable: true,
-                                                                                padding: 20,
-                                                                                layout: {
-                                                                                    type: 'vbox',
-                                                                                    align: 'center',
-                                                                                    pack: 'center'
-                                                                                },
-                                                                                items:[
-                                                                                    {
-                                                                                        xtype: 'image',
-                                                                                        src: "resources/images/icon_ok.png",
-                                                                                        width: 250,
-                                                                                        height: 250
-                                                                                    },
-                                                                                    {
-                                                                                        xtype: 'button',
-                                                                                        text: 'Inizia subito!',
-                                                                                        ui: 'confirm',
-                                                                                        margin: '30 0 0 0',
-                                                                                        handler: function(){
-                                                                                            btn.up("viewport").mask({
-                                                                                                xtype: 'loadmask',
-                                                                                                message: 'Cominciamo...'
-                                                                                            });
-                                                                                            setTimeout(function(){
-                                                                                                btn.up("viewport").unmask();
-                                                                                                SemperSitAmet.app.getController("C_utility").updateUiStates();
-                                                                                                Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem(1);
-                                                                                            },3000);
-                                                                                        }
-                                                                                    }
-                                                                                ]
-                                                                            }
-                                                                        )
-                                                                    }
-                                                                }/*,
-                                                                failure: function(){
-                                                                    btn.up("viewport").unmask();
-                                                                    //Ext.Msg.alert("Attenzione","Non connesso ad Arduino!");
-                                                                    Ext.Msg.confirm("Attenzione", "Non connesso ad Arduino! Continuare lo stesso?", function(buttonId){
-                                                                        if(buttonId == "yes"){
+                                                                            btn.up("viewport").unmask();
+
                                                                             btn.up("navigationview").push(
-                                                                              /////////////////////////////////////////////////////////////////////////////
-                                                                              /////////////////////////////////////////////////////////////////////////////
+                                                                            /////////////////////////////////////////////////////////////////////////////
+                                                                            /////////////////////////////////////////////////////////////////////////////
                                                                                 {
                                                                                     title: 'Perfetto!',
                                                                                     scrollable: true,
@@ -175,10 +142,57 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                                 }
                                                                             )
                                                                         }
-                                                                    });
-                                                                }*/
-                                                            });
-                                                        }
+                                                                    }/*,
+                                                                    failure: function(){
+                                                                        btn.up("viewport").unmask();
+                                                                        //Ext.Msg.alert("Attenzione","Non connesso ad Arduino!");
+                                                                        Ext.Msg.confirm("Attenzione", "Non connesso ad Arduino! Continuare lo stesso?", function(buttonId){
+                                                                            if(buttonId == "yes"){
+                                                                                btn.up("navigationview").push(
+                                                                                  /////////////////////////////////////////////////////////////////////////////
+                                                                                  /////////////////////////////////////////////////////////////////////////////
+                                                                                    {
+                                                                                        title: 'Perfetto!',
+                                                                                        scrollable: true,
+                                                                                        padding: 20,
+                                                                                        layout: {
+                                                                                            type: 'vbox',
+                                                                                            align: 'center',
+                                                                                            pack: 'center'
+                                                                                        },
+                                                                                        items:[
+                                                                                            {
+                                                                                                xtype: 'image',
+                                                                                                src: "resources/images/icon_ok.png",
+                                                                                                width: 250,
+                                                                                                height: 250
+                                                                                            },
+                                                                                            {
+                                                                                                xtype: 'button',
+                                                                                                text: 'Inizia subito!',
+                                                                                                ui: 'confirm',
+                                                                                                margin: '30 0 0 0',
+                                                                                                handler: function(){
+                                                                                                    btn.up("viewport").mask({
+                                                                                                        xtype: 'loadmask',
+                                                                                                        message: 'Cominciamo...'
+                                                                                                    });
+                                                                                                    setTimeout(function(){
+                                                                                                        btn.up("viewport").unmask();
+                                                                                                        SemperSitAmet.app.getController("C_utility").updateUiStates();
+                                                                                                        Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem(1);
+                                                                                                    },3000);
+                                                                                                }
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                )
+                                                                            }
+                                                                        });
+                                                                    }*/
+                                                                });
+                                                            }
+                                                        },null,false,"192.168.1");
 
 
                                                     }
