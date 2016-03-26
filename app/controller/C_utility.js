@@ -3,7 +3,7 @@ Ext.define('SemperSitAmet.controller.C_utility', {
 
     config: {
         control:{
-            
+
         }
     },
 
@@ -11,7 +11,7 @@ Ext.define('SemperSitAmet.controller.C_utility', {
 
     updateUiStates: function(){
         Ext.Ajax.request({
-            url: 'http://192.168.1.220/?action=read_actual_states',
+            url: 'http://"+window.localStorage.getItem("arduino_ip");+"/?action=read_actual_states',
             timeout: 5000,
             success: function(response){
                 var risposta = Ext.JSON.decode(response.responseText),
@@ -19,7 +19,7 @@ Ext.define('SemperSitAmet.controller.C_utility', {
                     led8 = risposta["result"]["8"];
 
                 Ext.ComponentQuery.query("main togglefield[name=led_verde]")[0].setValue(led7);
-                Ext.ComponentQuery.query("main togglefield[name=led_rosso]")[0].setValue(led8);                
+                Ext.ComponentQuery.query("main togglefield[name=led_rosso]")[0].setValue(led8);
             },
             failure: function(){
                 Ext.Msg.alert("ERROR CONNECTION","Non connesso ad Arduino");
@@ -34,7 +34,7 @@ Ext.define('SemperSitAmet.controller.C_utility', {
                 //
             }
         }
-        xhttp.open("GET", "http://192.168.1.220/?action=set&led="+pin+"&value="+value, true); //false = sync || true = async
+        xhttp.open("GET", "http://"+window.localStorage.getItem("arduino_ip")+"/?action=set&led="+pin+"&value="+value, true); //false = sync || true = async
         xhttp.send();
     }
 

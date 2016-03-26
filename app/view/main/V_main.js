@@ -7,8 +7,8 @@ Ext.define('SemperSitAmet.view.main.V_main', {
 
         layout: {
             type: 'vbox',
-            align: 'center',
-            pack: 'center'
+            align: 'center'
+            //pack: 'center'
         },
 
         items: [
@@ -45,7 +45,7 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                                 //Ext.Msg.alert("switched","switched");
                             }
                         }
-                        xhttp.open("GET", "http://192.168.1.220/?action=set&led=7&value="+value, true); //false = sync || true = async
+                        xhttp.open("GET", "http://"+window.localStorage.getItem("arduino_ip")+"/?action=set&led=7&value="+value, true); //false = sync || true = async
                         xhttp.send();
                     }
                 }
@@ -66,7 +66,28 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                                 //Ext.Msg.alert("switched","switched");
                             }
                         }
-                        xhttp.open("GET", "http://192.168.1.220/?action=set&led=8&value="+value, true); //false = sync || true = async
+                        xhttp.open("GET", "http://"+window.localStorage.getItem("arduino_ip")+"/?action=set&led=8&value="+value, true); //false = sync || true = async
+                        xhttp.send();
+                    }
+                }
+            },
+            {
+                xtype: 'togglefield',
+                label: 'Walter 5',
+                name: 'led_rosso',
+                width: '100%',
+                labelWidth: '70%',
+                listeners: {
+                    change: function(btn,checked){
+                        var value = checked ? 1 : 0;
+
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function(){
+                            if (xhttp.readyState == 4 && xhttp.status == 200){
+                                //Ext.Msg.alert("switched","switched");
+                            }
+                        }
+                        xhttp.open("GET", "http://"+window.localStorage.getItem("arduino_ip")+"/?action=set&led=5&value="+value, true); //false = sync || true = async
                         xhttp.send();
                     }
                 }
@@ -83,7 +104,7 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                                 //
                             }
                         }
-                        xhttp.open("GET", "http://192.168.1.220/?action=save_current_states", true); //false = sync || true = async
+                        xhttp.open("GET", "http://"+window.localStorage.getItem("arduino_ip")+"/?action=save_current_states", true); //false = sync || true = async
                         xhttp.send();
                     }
                 }
@@ -109,7 +130,7 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                                 SemperSitAmet.app.getController("C_utility").updateUiStates();
                             }
                         }
-                        xhttp.open("GET", "http://192.168.1.220/?action=read_saved_states", true); //false = sync || true = async
+                        xhttp.open("GET", "http://"+window.localStorage.getItem("arduino_ip")+"/?action=read_saved_states", true); //false = sync || true = async
                         xhttp.send();
                     }
                 }

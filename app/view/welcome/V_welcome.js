@@ -31,6 +31,13 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                     },
                     {
                         xtype: 'button',
+                        text:   'Mostra cookie',
+                        handler: function(){
+                            Ext.Msg.alert("arduino_ip",window.localStorage.getItem("arduino_ip"));
+                        }
+                    },
+                    {
+                        xtype: 'button',
                         text: 'Inizia',
                         ui: 'action-forward',
                         margin: '20 0 0 0',
@@ -74,60 +81,22 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                             message: 'Verifica in corso'
                                                         });
 
-                                                        Ext.Ajax.request({
-                                                            url: 'http://192.168.1.220/?action=read_actual_states',
-                                                            timeout: 5000,
-                                                            success: function(response){
-                                                                btn.up("viewport").unmask();
+                                                        var ip_trovato = false;
+                                                        for(var i = 0; i<256 || ip_trovato; i++){
+                                                            Ext.Ajax.request({
+                                                                url: 'http://192.168.1.'+i+'/?action=read_actual_states',
+                                                                timeout: 2000,
+                                                                success: function(response){
+                                                                    var risposta = Ext.JSON.decode(response.responseText);
+                                                                    if(risposta["success"]){
+                                                                        //salvo ip nel localStorage
+                                                                        window.localStorage.setItem("arduino_ip",'192.168.1.'+i);
 
-                                                                btn.up("navigationview").push(
-                                                                /////////////////////////////////////////////////////////////////////////////
-                                                                /////////////////////////////////////////////////////////////////////////////
-                                                                    {
-                                                                        title: 'Perfetto!',
-                                                                        scrollable: true,
-                                                                        padding: 20,
-                                                                        layout: {
-                                                                            type: 'vbox',
-                                                                            align: 'center',
-                                                                            pack: 'center'
-                                                                        },
-                                                                        items:[
-                                                                            {
-                                                                                xtype: 'image',
-                                                                                src: "resources/images/icon_ok.png",
-                                                                                width: 250,
-                                                                                height: 250
-                                                                            },
-                                                                            {
-                                                                                xtype: 'button',
-                                                                                text: 'Inizia subito!',
-                                                                                ui: 'confirm',
-                                                                                margin: '30 0 0 0',
-                                                                                handler: function(){
-                                                                                    btn.up("viewport").mask({
-                                                                                        xtype: 'loadmask',
-                                                                                        message: 'Cominciamo...'
-                                                                                    });
-                                                                                    setTimeout(function(){
-                                                                                        btn.up("viewport").unmask();
-                                                                                        SemperSitAmet.app.getController("C_utility").updateUiStates();
-                                                                                        Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem(1);
-                                                                                    },3000);
-                                                                                }
-                                                                            }
-                                                                        ]
-                                                                    }
-                                                                )
-                                                            },
-                                                            failure: function(){
-                                                                btn.up("viewport").unmask();
-                                                                //Ext.Msg.alert("Attenzione","Non connesso ad Arduino!");
-                                                                Ext.Msg.confirm("Attenzione", "Non connesso ad Arduino! Continuare lo stesso?", function(buttonId){
-                                                                    if(buttonId == "yes"){
+                                                                        btn.up("viewport").unmask();
+
                                                                         btn.up("navigationview").push(
-                                                                          /////////////////////////////////////////////////////////////////////////////
-                                                                          /////////////////////////////////////////////////////////////////////////////
+                                                                        /////////////////////////////////////////////////////////////////////////////
+                                                                        /////////////////////////////////////////////////////////////////////////////
                                                                             {
                                                                                 title: 'Perfetto!',
                                                                                 scrollable: true,
@@ -165,9 +134,58 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                             }
                                                                         )
                                                                     }
-                                                                });
-                                                            }
-                                                        });
+                                                                }/*,
+                                                                failure: function(){
+                                                                    btn.up("viewport").unmask();
+                                                                    //Ext.Msg.alert("Attenzione","Non connesso ad Arduino!");
+                                                                    Ext.Msg.confirm("Attenzione", "Non connesso ad Arduino! Continuare lo stesso?", function(buttonId){
+                                                                        if(buttonId == "yes"){
+                                                                            btn.up("navigationview").push(
+                                                                              /////////////////////////////////////////////////////////////////////////////
+                                                                              /////////////////////////////////////////////////////////////////////////////
+                                                                                {
+                                                                                    title: 'Perfetto!',
+                                                                                    scrollable: true,
+                                                                                    padding: 20,
+                                                                                    layout: {
+                                                                                        type: 'vbox',
+                                                                                        align: 'center',
+                                                                                        pack: 'center'
+                                                                                    },
+                                                                                    items:[
+                                                                                        {
+                                                                                            xtype: 'image',
+                                                                                            src: "resources/images/icon_ok.png",
+                                                                                            width: 250,
+                                                                                            height: 250
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'button',
+                                                                                            text: 'Inizia subito!',
+                                                                                            ui: 'confirm',
+                                                                                            margin: '30 0 0 0',
+                                                                                            handler: function(){
+                                                                                                btn.up("viewport").mask({
+                                                                                                    xtype: 'loadmask',
+                                                                                                    message: 'Cominciamo...'
+                                                                                                });
+                                                                                                setTimeout(function(){
+                                                                                                    btn.up("viewport").unmask();
+                                                                                                    SemperSitAmet.app.getController("C_utility").updateUiStates();
+                                                                                                    Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem(1);
+                                                                                                },3000);
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            )
+                                                                        }
+                                                                    });
+                                                                }*/
+                                                            });
+                                                        }
+
+
                                                     }
                                                 }
                                             }
