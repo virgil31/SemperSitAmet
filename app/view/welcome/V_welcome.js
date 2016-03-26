@@ -31,13 +31,6 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                     },
                     {
                         xtype: 'button',
-                        text:   'Mostra cookie',
-                        handler: function(){
-                            Ext.Msg.alert("arduino_ip",window.localStorage.getItem("arduino_ip"));
-                        }
-                    },
-                    {
-                        xtype: 'button',
                         text: 'Inizia',
                         ui: 'action-forward',
                         margin: '20 0 0 0',
@@ -89,8 +82,10 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                 success: function(response){
                                                                     var risposta = Ext.JSON.decode(response.responseText);
                                                                     if(risposta["success"]){
+                                                                        var ip_da_salvare = response.request.options.url.replace("http://","").replace("/?action=read_actual_states","");
+
                                                                         //salvo ip nel localStorage
-                                                                        window.localStorage.setItem("arduino_ip",'192.168.1.'+i);
+                                                                        window.localStorage.setItem("arduino_ip",ip_da_salvare);
 
                                                                         btn.up("viewport").unmask();
 

@@ -11,7 +11,7 @@ Ext.define('SemperSitAmet.controller.C_utility', {
 
     updateUiStates: function(){
         Ext.Ajax.request({
-            url: 'http://"+window.localStorage.getItem("arduino_ip");+"/?action=read_actual_states',
+            url: 'http://'+window.localStorage.getItem("arduino_ip")+'/?action=read_actual_states',
             timeout: 5000,
             success: function(response){
                 var risposta = Ext.JSON.decode(response.responseText),

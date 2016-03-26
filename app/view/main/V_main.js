@@ -134,6 +134,15 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                         xhttp.send();
                     }
                 }
+            },
+
+            {
+                xtype: 'button',
+                text:   'Elimina cookie "arduino_ip"',
+                margin: '10 0 0 0',
+                handler: function(){
+                    window.localStorage.removeItem("arduino_ip");
+                }
             }
         ]
     }

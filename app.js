@@ -90,8 +90,12 @@ Ext.application({
         });
 
         var arduino_ip = window.localStorage.getItem("arduino_ip");
-        if(arduino_ip != null && arduino_ip != "" && arduino_ip != undefined)
+        console.log(arduino_ip);
+        if(arduino_ip !== null){
             Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem(1);
+            SemperSitAmet.app.getController("C_utility").updateUiStates();
+        }
+
     },
 
     onUpdated: function() {
