@@ -112,7 +112,7 @@ Ext.define('SemperSitAmet.view.main.V_main', {
             {
                 xtype: 'button',
                 text: 'Carica configurazione',
-                margin: '10 0 0 0',
+                margin: '10 0 10 0',
                 listeners: {
                     tap: function(btn){
                         var xhttp = new XMLHttpRequest();

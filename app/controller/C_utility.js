@@ -22,7 +22,7 @@ Ext.define('SemperSitAmet.controller.C_utility', {
                 Ext.ComponentQuery.query("main togglefield[name=led_rosso]")[0].setValue(led8);
             },
             failure: function(){
-                Ext.Msg.alert("ERROR CONNECTION","Non connesso ad Arduino");
+                Ext.Msg.alert("ERROR CONNECTION","Non connesso ad Arduino.");
             }
         });
     },

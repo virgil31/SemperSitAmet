@@ -3,9 +3,10 @@ Ext.define('SemperSitAmet.view.settings.V_settings', {
     xtype: 'settings',
 
 
-    defaultBackButtonText: "Indietro",
 
     config: {
+        defaultBackButtonText: "Indietro",
+
 
         navigationBar: {
             docked: 'top',
@@ -41,16 +42,19 @@ Ext.define('SemperSitAmet.view.settings.V_settings', {
                         listeners: {
                             itemtap: function(item, index){
                                 if(index == 0)
-                                    item.up("navigationview").push({xtype: "settings_profiles"});
-                                if(index == 1)
                                     item.up("navigationview").push({xtype: "settings_tester"});
+                                if(index == 1)
+                                    item.up("navigationview").push({xtype: "settings_pins"});
                                 if(index == 2)
+                                    item.up("navigationview").push({xtype: "settings_profiles"});
+                                if(index == 3)
                                     item.up("navigationview").push({xtype: "settings_about"});
                             }
                         },
                         data: [
+                            { title: 'Verifica connessione', pictosIcon: '!' },
+                            { title: 'Configura Pin', pictosIcon: 'x' },
                             { title: 'Profili', pictosIcon: 'n' },
-                            { title: 'Tester', pictosIcon: 'x' },
                             { title: 'Info', pictosIcon: 'i' }
                         ]
                     }

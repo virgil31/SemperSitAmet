@@ -19,7 +19,9 @@ Ext.application({
         'Ext.Img',
         'Ext.Ajax',
         'Ext.field.Toggle',
-        'Ext.List'
+        'Ext.List',
+        'Ext.field.Select',
+        'Ext.field.Number'
     ],
 
     controllers:[
@@ -90,7 +92,8 @@ Ext.application({
         });
 
         var arduino_ip = window.localStorage.getItem("arduino_ip");
-
+        //se il cookie è settato allora controllo se è ancora valido quell'ip,
+        //altrimenti ripeto l'associazione
         if(arduino_ip !== null){
             Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem(1);
             SemperSitAmet.app.getController("C_utility").updateUiStates();
