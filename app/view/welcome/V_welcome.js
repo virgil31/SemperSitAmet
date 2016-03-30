@@ -58,7 +58,7 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                 margin: '10 0 0 0'
                                             },
                                             {
-                                                html: "<div style='text-align: center;'>Arduino viene distribuito con l'indirizzo predefinito <b>192.168.1.220</b>. Assicurarsi quindi di trovarsi sulla sua stessa rete e che tale indirizzo non sia già occupato da un altro dispositivo.<br><br>Collegare Arduino alla rete adsl ed elettrica. Usare quindi il pulsante di seguito per effettuare un test veloce.</div>",
+                                                html: "<div style='text-align: center;'>Collegare Arduino alla rete adsl ed elettrica.<br><br>E' consigliabile associare un'ip fisso ad Arduino <br><br><b>hostname:</b> <i>WIZnetEFFEED</i><br><b>MAC:</b> <i>DE:AD:BE:EF:FE:ED</i><br><br> Usare quindi il pulsante di seguito per effettuare la connessione.</div>",
                                                 margin: '20 0 0 0'
                                             },
                                             {

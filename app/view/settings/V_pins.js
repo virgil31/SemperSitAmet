@@ -9,8 +9,7 @@ Ext.define('SemperSitAmet.view.settings.V_pins', {
 
         layout: {
             type: 'vbox',
-            align: 'center',
-            pack: 'center'
+            align: 'center'
         },
 
         items: [
