@@ -1879,7 +1879,8 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSet": "../../touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLResultSetRowList": "../../touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "../../touch/src/device/sqlite/Sencha.js",
-  "SemperSitAmet": "../../app"
+  "SemperSitAmet": "../../app",
+  "SemperSitAmet.view.main.V_main": "../../app/view/main/V_main_ORIGINAL.js"
 });
 
 Ext.ClassManager.addNameAlternateMappings({

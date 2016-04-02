@@ -27,77 +27,7 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                         }
                     }
                 ]
-            },
-            // vv TEST
-            {
-                xtype: 'switch',
-                pin: 7,
-                etichetta: 'switch 7',
-                disabled: false,
-                width: '100%',
-                labelWidth: '70%'
-            },
-            {
-                xtype: 'pression_button',
-                pin: 8,
-                etichetta: 'pression_button 8',
-                disabled: false,
-                width: '100%',
-                labelWidth: '70%'
-            },
-            {
-                xtype: 'timed_button',
-                pin: 7,
-                etichetta: 'timed_button 7',
-                disabled: false,
-                tempo: 3000,
-                width: '100%',
-                labelWidth: '70%'
-            },
-            // ^^
-
-            {
-                xtype: 'togglefield',
-                label: 'Led Verde',
-                name: 'led_verde',
-                width: '100%',
-                labelWidth: '70%',
-                listeners: {
-                    change: function(btn,checked){
-                        var value = checked ? 1 : 0;
-
-                        var xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function(){
-                            if (xhttp.readyState == 4 && xhttp.status == 200){
-                                //Ext.Msg.alert("switched","switched");
-                            }
-                        }
-                        xhttp.open("GET", "http://"+window.localStorage.getItem("arduino_ip")+"/?action=set&pin=7&value="+value, true); //false = sync || true = async
-                        xhttp.send();
-                    }
-                }
-            },
-            {
-                xtype: 'togglefield',
-                label: 'Led Rosso',
-                name: 'led_rosso',
-                width: '100%',
-                labelWidth: '70%',
-                listeners: {
-                    change: function(btn,checked){
-                        var value = checked ? 1 : 0;
-
-                        var xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function(){
-                            if (xhttp.readyState == 4 && xhttp.status == 200){
-                                //Ext.Msg.alert("switched","switched");
-                            }
-                        }
-                        xhttp.open("GET", "http://"+window.localStorage.getItem("arduino_ip")+"/?action=set&pin=8&value="+value, true); //false = sync || true = async
-                        xhttp.send();
-                    }
-                }
-            },
+            }/*,
             {
                 xtype: 'button',
                 text: 'Salva configurazione',
@@ -140,25 +70,44 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                         xhttp.send();
                     }
                 }
-            },
-
-            {
-                xtype: 'button',
-                text:   'Elimina cookie "arduino_ip"',
-                margin: '10 0 0 0',
-                handler: function(){
-                    window.localStorage.removeItem("arduino_ip");
-                }
-            },
-
-            {
-                xtype: 'button',
-                text:   'Elimina cookie "config_pins"',
-                margin: '10 0 0 0',
-                handler: function(){
-                    window.localStorage.removeItem("config_pins");
-                }
-            }
+            },*/
         ]
+    },
+
+    initialize : function() {
+        this_view = this;
+        this_view.callParent();
+
+        if(Ext.JSON.decode(window.localStorage.getItem("config_pins"))==null) SemperSitAmet.app.inizializzoBottoni();
+        var config_pins = Ext.JSON.decode(window.localStorage.getItem("config_pins"));
+        var items = [];
+
+        config_pins.forEach(function(config_pin){
+            if(config_pin !== null){
+                config_pin.width = '100%';
+                config_pin.labelWidth = '70%';
+                items.push(config_pin);
+            }
+        });
+
+        items.push({
+            xtype: 'button',
+            text:   'Elimina cookie "arduino_ip"',
+            margin: '10 0 0 0',
+            handler: function(){
+                window.localStorage.removeItem("arduino_ip");
+            }
+        });
+
+        items.push({
+            xtype: 'button',
+            text:   'Elimina cookie "config_pins"',
+            margin: '10 0 0 0',
+            handler: function(){
+                window.localStorage.removeItem("config_pins");
+            }
+        });
+
+        this_view.setItems(items);
     }
 });

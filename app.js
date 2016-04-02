@@ -95,7 +95,7 @@ Ext.application({
         var arduino_ip = window.localStorage.getItem("arduino_ip");
         if(arduino_ip !== null){
             Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem(1);
-            SemperSitAmet.app.getController("C_utility").updateUiStates();
+            //SemperSitAmet.app.getController("C_utility").updateUiStates();
         }
 
         //se non sono stati configurati i pin li metto con la config di default
@@ -109,13 +109,28 @@ Ext.application({
 
     inizializzoBottoni: function(){
         var config_pins = [];
-        for(var i = 0 ; i<8; i++){
-            config_pins[i+2] = {
-                etichetta: "PIN_"+(i+2),
-                tipo: "switch", //switch,pression_button,timed_button,monitor_temperature
+        for(var i = 0 ; i<7; i++){
+            config_pins[i+3] = {
+                xtype: "switch", //switch,pression_button,timed_button,monitor_temperature
+                pin: (i+3),
+                etichetta: "PIN_"+(i+3),
                 tempo: null,
                 disabilitato: false
             }
+        }
+        config_pins[14] = {
+            xtype: "switch", //switch,pression_button,timed_button,monitor_temperature
+            pin: 14,
+            etichetta: "PIN_A0",
+            tempo: null,
+            disabilitato: false
+        }
+        config_pins[15] = {
+            xtype: "switch", //switch,pression_button,timed_button,monitor_temperature
+            pin: 15,
+            etichetta: "PIN_A1",
+            tempo: null,
+            disabilitato: false
         }
         window.localStorage.setItem("config_pins",Ext.JSON.encode(config_pins));
     },
