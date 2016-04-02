@@ -23,6 +23,10 @@ Ext.define('SemperSitAmet.view.settings.V_about', {
                 style: {
                     backgroundColor: "white"
                 }
+            },
+            {
+                xtype: 'label',
+                html:   "<b>ARDUINO_IP</b><br>"+window.localStorage.getItem("arduino_ip")+"<br><br><b>CONFIG_PINS</b><br>"+window.localStorage.getItem("config_pins")
             }
         ]
     }

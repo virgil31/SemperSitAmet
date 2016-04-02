@@ -6,8 +6,6 @@ Ext.define('SemperSitAmet.view.type_pin.V_switch', {
         this_view = this;
         this_view.callParent();
 
-        Ext.Msg.alert("pin:"+this_view.pin,"etichetta:"+this_view.etichetta);
-
         var pin = this_view.pin;
         this_view.setLabel(this_view.etichetta)
 

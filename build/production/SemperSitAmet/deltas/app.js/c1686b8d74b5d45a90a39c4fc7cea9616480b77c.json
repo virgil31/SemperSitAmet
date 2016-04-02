@@ -1,1 +1,1 @@
-["function _08ea58e5889decce27ea55015146c904ff1396d8",50,586020,"Ext.Msg.alert(\"pin:\"+this_view.pin,\"etichetta:\"+this_view.etichetta",586831,35,586103,15603,602009,152,601705,304,602161,569]
+["function _a4c95e8e27e7bf76e879f3fce2a0505eab304d19",50,596294,",{xtype:\"label\",html:\"<b>ARDUINO_IP</b><br>",587056,45,"<br><br><b>CONFIG_PINS</b><br>\"+",602012,42,596343,5363,602009,152,601705,304,602161,63,".push(",602230,73,")}a.push(",602310,66,");a.push(",602383,79,")",602462,268]
