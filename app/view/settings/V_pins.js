@@ -37,8 +37,8 @@ Ext.define('SemperSitAmet.view.settings.V_pins', {
                         name: 'tipo7',
                         options: [
                             {text: 'Switch',  value: 'switch'},
-                            {text: 'A pressione', value: 'button_pression'},
-                            {text: 'Temporizzato',  value: 'button_time'},
+                            {text: 'A pressione', value: 'pression_button'},
+                            {text: 'Temporizzato',  value: 'timed_button'},
                             {text: 'Sensore Temperatura', value: 'monitor_temperature'}
                         ],
                         flex: 1
@@ -111,11 +111,11 @@ Ext.define('SemperSitAmet.view.settings.V_pins', {
                 margin: '10 0 0 0',
                 handler: function(){
                     var pin7 = {
-                        etichetta: Ext.ComponentQuery.query("settings_pins textfield[name=etichetta7]")[0].getValue(),
-                        tipo: Ext.ComponentQuery.query("settings_pins selectfield[name=tipo7]")[0].getValue(),
-                        tempo: Ext.ComponentQuery.query("settings_pins numberfield[name=tempo7]")[0].getValue(),
-                        disabilitato: Ext.ComponentQuery.query("settings_pins textfield[name=disabilitato7]")[0].getValue()
-                    },
+                            etichetta: Ext.ComponentQuery.query("settings_pins textfield[name=etichetta7]")[0].getValue(),
+                            tipo: Ext.ComponentQuery.query("settings_pins selectfield[name=tipo7]")[0].getValue(),
+                            tempo: Ext.ComponentQuery.query("settings_pins numberfield[name=tempo7]")[0].getValue(),
+                            disabilitato: Ext.ComponentQuery.query("settings_pins textfield[name=disabilitato7]")[0].getValue()
+                        },
                         pin8 = {
                             etichetta: Ext.ComponentQuery.query("settings_pins textfield[name=etichetta8]")[0].getValue(),
                             tipo: Ext.ComponentQuery.query("settings_pins selectfield[name=tipo8]")[0].getValue(),

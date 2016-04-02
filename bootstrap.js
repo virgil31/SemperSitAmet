@@ -660,6 +660,7 @@ Ext.ClassManager.addNameAlternateMappings({
   ],
   "SemperSitAmet.controller.C_main": [],
   "SemperSitAmet.controller.C_settings": [],
+  "SemperSitAmet.controller.C_type_pin": [],
   "SemperSitAmet.controller.C_utility": [],
   "SemperSitAmet.controller.C_welcome": [],
   "SemperSitAmet.view.main.V_main": [],
@@ -668,6 +669,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "SemperSitAmet.view.settings.V_profiles": [],
   "SemperSitAmet.view.settings.V_settings": [],
   "SemperSitAmet.view.settings.V_tester": [],
+  "SemperSitAmet.view.type_pin.V_pression_button": [],
+  "SemperSitAmet.view.type_pin.V_switch": [],
+  "SemperSitAmet.view.type_pin.V_timed_button": [],
   "SemperSitAmet.view.welcome.V_welcome": []
 });
 
@@ -1388,6 +1392,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.WindowsPhone": [],
   "SemperSitAmet.controller.C_main": [],
   "SemperSitAmet.controller.C_settings": [],
+  "SemperSitAmet.controller.C_type_pin": [],
   "SemperSitAmet.controller.C_utility": [],
   "SemperSitAmet.controller.C_welcome": [],
   "SemperSitAmet.view.main.V_main": [
@@ -1407,6 +1412,15 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "SemperSitAmet.view.settings.V_tester": [
     "widget.settings_tester"
+  ],
+  "SemperSitAmet.view.type_pin.V_pression_button": [
+    "widget.pression_button"
+  ],
+  "SemperSitAmet.view.type_pin.V_switch": [
+    "widget.switch"
+  ],
+  "SemperSitAmet.view.type_pin.V_timed_button": [
+    "widget.timed_button"
   ],
   "SemperSitAmet.view.welcome.V_welcome": [
     "widget.welcome"

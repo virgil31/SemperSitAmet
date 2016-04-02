@@ -1,0 +1,46 @@
+
+Ext.define('SemperSitAmet.view.type_pin.V_pression_button', {
+    extend: 'Ext.Button',
+    xtype: 'pression_button',
+
+    initialize : function() {
+        this_view = this;
+        this_view.callParent();
+
+        this_view.element.on({
+            scope    : this,
+            touchstart : 'onTouchstart'
+        });
+
+        var pin = this_view.pin;
+        this_view.setText(this_view.etichetta)
+
+        this_view.setListeners({
+            touchstart: function(){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if (xhttp.readyState == 4 && xhttp.status == 200){
+                        //Ext.Msg.alert("switched","switched");
+                    }
+                }
+                xhttp.open("GET", "http://"+window.localStorage.getItem("arduino_ip")+"/?action=set&pin="+pin+"&value="+1, true);
+                xhttp.send();
+            },
+            release: function(btn){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if (xhttp.readyState == 4 && xhttp.status == 200){
+                        //Ext.Msg.alert("switched","switched");
+                    }
+                }
+                xhttp.open("GET", "http://"+window.localStorage.getItem("arduino_ip")+"/?action=set&pin="+pin+"&value="+0, true);
+                xhttp.send();
+            }
+        })
+    },
+
+    onTouchstart : function(e) {
+        this.fireEvent('touchstart', this, e);
+    }
+
+});

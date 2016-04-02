@@ -28,7 +28,8 @@ Ext.application({
         'C_utility',
         'C_welcome',
         'C_main',
-        'C_settings'
+        'C_settings',
+        'C_type_pin'
     ],
 
 
@@ -92,13 +93,31 @@ Ext.application({
         });
 
         var arduino_ip = window.localStorage.getItem("arduino_ip");
-        //se il cookie è settato allora controllo se è ancora valido quell'ip,
-        //altrimenti ripeto l'associazione
         if(arduino_ip !== null){
             Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem(1);
             SemperSitAmet.app.getController("C_utility").updateUiStates();
         }
 
+        //se non sono stati configurati i pin li metto con la config di default
+
+        if(window.localStorage.getItem("config_pins") === null)
+            this.inizializzoBottoni();
+
+        console.log(Ext.JSON.decode(window.localStorage.getItem("config_pins")));
+    },
+
+
+    inizializzoBottoni: function(){
+        var config_pins = [];
+        for(var i = 0 ; i<8; i++){
+            config_pins[i+2] = {
+                etichetta: "PIN_"+(i+2),
+                tipo: "switch", //switch,pression_button,timed_button,monitor_temperature
+                tempo: null,
+                disabilitato: false
+            }
+        }
+        window.localStorage.setItem("config_pins",Ext.JSON.encode(config_pins));
     },
 
     onUpdated: function() {

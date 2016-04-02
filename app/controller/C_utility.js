@@ -34,7 +34,7 @@ Ext.define('SemperSitAmet.controller.C_utility', {
                 //
             }
         }
-        xhttp.open("GET", "http://"+window.localStorage.getItem("arduino_ip")+"/?action=set&led="+pin+"&value="+value, true); //false = sync || true = async
+        xhttp.open("GET", "http://"+window.localStorage.getItem("arduino_ip")+"/?action=set&pin="+pin+"&value="+value, true); //false = sync || true = async
         xhttp.send();
     }
 
