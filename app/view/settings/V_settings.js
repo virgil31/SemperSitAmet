@@ -45,16 +45,16 @@ Ext.define('SemperSitAmet.view.settings.V_settings', {
                                     item.up("navigationview").push({xtype: "settings_tester"});
                                 if(index == 1)
                                     item.up("navigationview").push({xtype: "settings_pins"});
+                                //if(index == 2)
+                                //    item.up("navigationview").push({xtype: "settings_profiles"});
                                 if(index == 2)
-                                    item.up("navigationview").push({xtype: "settings_profiles"});
-                                if(index == 3)
                                     item.up("navigationview").push({xtype: "settings_about"});
                             }
                         },
                         data: [
                             { title: 'Verifica connessione', pictosIcon: '!' },
                             { title: 'Configura Pin', pictosIcon: 'x' },
-                            { title: 'Profili', pictosIcon: 'n' },
+                            //{ title: 'Profili', pictosIcon: 'n' },
                             { title: 'Info', pictosIcon: 'i' }
                         ]
                     }

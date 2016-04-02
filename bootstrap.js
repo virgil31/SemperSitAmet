@@ -33,8 +33,7 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSet": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
-  "SemperSitAmet": "app",
-  "SemperSitAmet.view.main.V_main": "app/view/main/V_main_ORIGINAL.js"
+  "SemperSitAmet": "app"
 });
 
 Ext.ClassManager.addNameAlternateMappings({
@@ -665,11 +664,13 @@ Ext.ClassManager.addNameAlternateMappings({
   "SemperSitAmet.controller.C_utility": [],
   "SemperSitAmet.controller.C_welcome": [],
   "SemperSitAmet.view.main.V_main": [],
+  "SemperSitAmet.view.main.V_main_ORIGINAL": [],
   "SemperSitAmet.view.settings.V_about": [],
   "SemperSitAmet.view.settings.V_pins": [],
   "SemperSitAmet.view.settings.V_profiles": [],
   "SemperSitAmet.view.settings.V_settings": [],
   "SemperSitAmet.view.settings.V_tester": [],
+  "SemperSitAmet.view.type_pin.V_monitor_temperature": [],
   "SemperSitAmet.view.type_pin.V_pression_button": [],
   "SemperSitAmet.view.type_pin.V_switch": [],
   "SemperSitAmet.view.type_pin.V_timed_button": [],
@@ -1399,6 +1400,9 @@ Ext.ClassManager.addNameAliasMappings({
   "SemperSitAmet.view.main.V_main": [
     "widget.main"
   ],
+  "SemperSitAmet.view.main.V_main_ORIGINAL": [
+    "widget.main"
+  ],
   "SemperSitAmet.view.settings.V_about": [
     "widget.settings_about"
   ],
@@ -1413,6 +1417,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "SemperSitAmet.view.settings.V_tester": [
     "widget.settings_tester"
+  ],
+  "SemperSitAmet.view.type_pin.V_monitor_temperature": [
+    "widget.monitor_temperature"
   ],
   "SemperSitAmet.view.type_pin.V_pression_button": [
     "widget.pression_button"

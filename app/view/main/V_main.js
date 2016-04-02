@@ -22,6 +22,7 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                         align: 'right',
                         listeners: {
                             tap: function(btn){
+                                Ext.ComponentQuery.query("settings")[0].reset();
                                 Ext.ComponentQuery.query("viewport panel[name=main_card]")[0].setActiveItem(1);
                             }
                         }

@@ -7,7 +7,8 @@ Ext.define('SemperSitAmet.controller.C_type_pin', {
         views: [
             'type_pin.V_switch',
             'type_pin.V_pression_button',
-            'type_pin.V_timed_button'
+            'type_pin.V_timed_button',
+            'type_pin.V_monitor_temperature'
         ],
 
         control:{

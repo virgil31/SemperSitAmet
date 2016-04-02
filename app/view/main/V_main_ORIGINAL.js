@@ -1,4 +1,4 @@
-Ext.define('SemperSitAmet.view.main.V_main', {
+Ext.define('SemperSitAmet.view.main.V_main_ORIGINAL', {
     extend: 'Ext.Panel',
     xtype: 'main',
 

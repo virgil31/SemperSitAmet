@@ -21,7 +21,8 @@ Ext.application({
         'Ext.field.Toggle',
         'Ext.List',
         'Ext.field.Select',
-        'Ext.field.Number'
+        'Ext.field.Number',
+        'Ext.Label'
     ],
 
     controllers:[
@@ -92,18 +93,19 @@ Ext.application({
             ]
         });
 
-        var arduino_ip = window.localStorage.getItem("arduino_ip");
-        if(arduino_ip !== null){
-            Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem(1);
-            //SemperSitAmet.app.getController("C_utility").updateUiStates();
-        }
-
         //se non sono stati configurati i pin li metto con la config di default
-
         if(window.localStorage.getItem("config_pins") === null)
             this.inizializzoBottoni();
 
         console.log(Ext.JSON.decode(window.localStorage.getItem("config_pins")));
+
+        var arduino_ip = window.localStorage.getItem("arduino_ip");
+        if(arduino_ip !== null){
+            Ext.ComponentQuery.query("viewport panel[name=card]")[0].layout.setAnimation(null);
+            Ext.ComponentQuery.query("viewport panel[name=card]")[0].setActiveItem(1);
+            Ext.ComponentQuery.query("viewport panel[name=card]")[0].layout.setAnimation("flip");
+            //SemperSitAmet.app.getController("C_utility").updateUiStates();
+        }
     },
 
 
@@ -115,7 +117,7 @@ Ext.application({
                 pin: (i+3),
                 etichetta: "PIN_"+(i+3),
                 tempo: null,
-                disabilitato: false
+                hidden: false
             }
         }
         config_pins[14] = {
@@ -123,14 +125,14 @@ Ext.application({
             pin: 14,
             etichetta: "PIN_A0",
             tempo: null,
-            disabilitato: false
+            hidden: false
         }
         config_pins[15] = {
-            xtype: "switch", //switch,pression_button,timed_button,monitor_temperature
+            xtype: "monitor_temperature", //switch,pression_button,timed_button,monitor_temperature
             pin: 15,
             etichetta: "PIN_A1",
             tempo: null,
-            disabilitato: false
+            hidden: false
         }
         window.localStorage.setItem("config_pins",Ext.JSON.encode(config_pins));
     },
@@ -156,7 +158,7 @@ http://pictos.cc/classic/font
 */
 
 /*
-Nel caso in cui la build production dias Unexpected Identifier su app.js :
+Nel caso in cui la build production dia Unexpected Identifier su app.js :
 
 1-Open Chrome's dev tools
 2-Goto to the resources tab
