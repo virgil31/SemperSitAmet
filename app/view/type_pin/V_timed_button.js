@@ -3,11 +3,11 @@ Ext.define('SemperSitAmet.view.type_pin.V_timed_button', {
     xtype: 'timed_button',
 
     initialize : function() {
+        this.callParent();
         this_view = this;
-        this_view.callParent();
 
-        var pin = this_view.pin;
-        this_view.setText(this_view.etichetta)
+        var pin = this_view.config.pin;
+        this_view.setText(this_view.config.etichetta)
 
         this_view.setListeners({
             tap: function(btn){

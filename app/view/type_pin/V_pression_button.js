@@ -4,16 +4,16 @@ Ext.define('SemperSitAmet.view.type_pin.V_pression_button', {
     xtype: 'pression_button',
 
     initialize : function() {
+        this.callParent();
         this_view = this;
-        this_view.callParent();
 
         this_view.element.on({
             scope    : this,
             touchstart : 'onTouchstart'
         });
 
-        var pin = this_view.pin;
-        this_view.setText(this_view.etichetta)
+        var pin = this_view.config.pin;
+        this_view.setText(this_view.config.etichetta)
 
         this_view.setListeners({
             touchstart: function(){

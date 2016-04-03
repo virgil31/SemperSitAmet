@@ -3,11 +3,11 @@ Ext.define('SemperSitAmet.view.type_pin.V_switch', {
     xtype: 'switch',
 
     initialize : function() {
+        this.callParent();
         this_view = this;
-        this_view.callParent();
 
-        var pin = this_view.pin;
-        this_view.setLabel(this_view.etichetta)
+        var pin = this_view.config.pin;
+        this_view.setLabel(this_view.config.etichetta)
 
         this_view.setListeners({
             change: function(btn,checked){

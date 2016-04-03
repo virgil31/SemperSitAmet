@@ -94,10 +94,9 @@ Ext.application({
         });
 
         //se non sono stati configurati i pin li metto con la config di default
-        if(window.localStorage.getItem("config_pins") === null)
-            this.inizializzoBottoni();
+        if(window.localStorage.getItem("config_pins")===null) this.inizializzoBottoni();
 
-        console.log(Ext.JSON.decode(window.localStorage.getItem("config_pins")));
+        //console.log(Ext.JSON.decode(window.localStorage.getItem("config_pins")));
 
         var arduino_ip = window.localStorage.getItem("arduino_ip");
         if(arduino_ip !== null){

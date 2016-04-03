@@ -11,11 +11,11 @@ Ext.define('SemperSitAmet.view.type_pin.V_monitor_temperature', {
     },
 
     initialize : function() {
+        this.callParent();
         this_view = this;
-        this_view.callParent();
 
-        var pin = this_view.pin;
-        var etichetta = this_view.etichetta;
+        var pin = this_view.config.pin;
+        var etichetta = this_view.config.etichetta;
 
         var items = [
             {

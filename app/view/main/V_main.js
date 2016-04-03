@@ -76,10 +76,10 @@ Ext.define('SemperSitAmet.view.main.V_main', {
     },
 
     initialize : function() {
+        this.callParent();
         this_view = this;
-        this_view.callParent();
 
-        if(Ext.JSON.decode(window.localStorage.getItem("config_pins"))==null) SemperSitAmet.app.inizializzoBottoni();
+        if(window.localStorage.getItem("config_pins")===null) SemperSitAmet.app.inizializzoBottoni();   //spostato in app.js
         var config_pins = Ext.JSON.decode(window.localStorage.getItem("config_pins"));
         var items = [];
 
