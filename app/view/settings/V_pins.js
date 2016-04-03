@@ -11,124 +11,56 @@ Ext.define('SemperSitAmet.view.settings.V_pins', {
             type: 'vbox',
             align: 'center'
         },
-
+        defaults:{
+            margin: '10 0 10 0'
+        }
+        /*
         items: [
-            //PIN7
             {
-                xtype: 'panel',
-                width: "100%",
-                layout:{
-                    type: 'hbox',
-                    align: 'center'
-                },
-                items: [
-                    {
-                        html: "7",
-                        flex: 0.2
-                    },
-                    {
-                        xtype: 'textfield',
-                        name: 'etichetta7',
-                        value: 'pin7',
-                        flex: 1
-                    },
-                    {
-                        xtype: 'selectfield',
-                        name: 'tipo7',
-                        options: [
-                            {text: 'Switch',  value: 'switch'},
-                            {text: 'A pressione', value: 'pression_button'},
-                            {text: 'Temporizzato',  value: 'timed_button'},
-                            {text: 'Sensore Temperatura', value: 'monitor_temperature'}
-                        ],
-                        flex: 1
-                    },
-                    {
-                        xtype: 'numberfield',
-                        name: 'tempo7',
-                        hidden: true
-                    },
-                    {
-                        xtype: 'selectfield',
-                        name: 'disabilitato7',
-                        options: [
-                            {text: 'OK',  value: 'false'},
-                            {text: 'OFF', value: 'true'}
-                        ],
-                        flex: 1
-                    }
-                ]
-            },
-            //PIN8
-            {
-                xtype: 'panel',
-                width: "100%",
-                layout:{
-                    type: 'hbox',
-                    align: 'center'
-                },
-                items: [
-                    {
-                        html: "8",
-                        flex: 0.2
-                    },
-                    {
-                        xtype: 'textfield',
-                        name: 'etichetta8',
-                        value: 'pin8',
-                        flex: 1
-                    },
-                    {
-                        xtype: 'selectfield',
-                        name: 'tipo8',
-                        options: [
-                            {text: 'Switch',  value: 'switch'},
-                            {text: 'A pressione', value: 'button_pression'},
-                            {text: 'Temporizzato',  value: 'button_time'},
-                            {text: 'Sensore Temperatura', value: 'monitor_temperature'}
-                        ],
-                        flex: 1
-                    },
-                    {
-                        xtype: 'numberfield',
-                        name: 'tempo8',
-                        hidden: true
-                    },
-                    {
-                        xtype: 'selectfield',
-                        name: 'disabilitato8',
-                        options: [
-                            {text: 'OK',  value: 'false'},
-                            {text: 'OFF', value: 'true'}
-                        ],
-                        flex: 1
-                    }
-                ]
+                xtype: 'button',
+                text: 'PIN_7',
+                handler: function() {
+                    this.up("navigationview").push({xtype: "config_pin"});
+                    var pin = SemperSitAmet.app.getController("C_settings").getConfigAndPositionByPin(7);
+                    Ext.ComponentQuery.query("config_pin")[0].setValues(pin.config);
+                }
             },
             {
                 xtype: 'button',
-                text: 'Salva',
-                margin: '10 0 0 0',
-                handler: function(){
-                    var pin7 = {
-                            etichetta: Ext.ComponentQuery.query("settings_pins textfield[name=etichetta7]")[0].getValue(),
-                            tipo: Ext.ComponentQuery.query("settings_pins selectfield[name=tipo7]")[0].getValue(),
-                            tempo: Ext.ComponentQuery.query("settings_pins numberfield[name=tempo7]")[0].getValue(),
-                            disabilitato: Ext.ComponentQuery.query("settings_pins textfield[name=disabilitato7]")[0].getValue()
-                        },
-                        pin8 = {
-                            etichetta: Ext.ComponentQuery.query("settings_pins textfield[name=etichetta8]")[0].getValue(),
-                            tipo: Ext.ComponentQuery.query("settings_pins selectfield[name=tipo8]")[0].getValue(),
-                            tempo: Ext.ComponentQuery.query("settings_pins numberfield[name=tempo8]")[0].getValue(),
-                            disabilitato: Ext.ComponentQuery.query("settings_pins textfield[name=disabilitato8]")[0].getValue()
-                        };
+                text: 'PIN_8',
+                handler: function() {
+                    this.up("navigationview").push({xtype: "config_pin"});
+                    var pin = SemperSitAmet.app.getController("C_settings").getConfigAndPositionByPin(8);
 
-                    var pins = [null,null,null,null,null,null,null,pin7,pin8];
-
-                    console.log(pins);
-                    //console.log(pins[7]); //mostro la config del 7' pin
+                    Ext.ComponentQuery.query("config_pin")[0].setValues(pin.config);
                 }
             }
         ]
+        */
+    },
+    initialize : function() {
+        this.callParent();
+        this_view = this;
+
+        if(window.localStorage.getItem("config_pins")===null) SemperSitAmet.app.inizializzoBottoni();
+        var config_pins = Ext.JSON.decode(window.localStorage.getItem("config_pins"));
+        var items = [];
+
+        config_pins.forEach(function(config_pin){
+            if(config_pin !== null){
+                items.push({
+                    xtype: 'button',
+                    text: 'PIN_'+config_pin.pin,
+                    handler: function() {
+                        this.up("navigationview").push({xtype: "config_pin"});
+                        var pin = SemperSitAmet.app.getController("C_settings").getConfigAndPositionByPin(config_pin.pin);
+
+                        Ext.ComponentQuery.query("config_pin")[0].setValues(pin.config);
+                    }
+                });
+            }
+        });
+
+        this_view.setItems(items);
     }
 });

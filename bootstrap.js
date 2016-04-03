@@ -666,6 +666,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "SemperSitAmet.view.main.V_main": [],
   "SemperSitAmet.view.main.V_main_ORIGINAL": [],
   "SemperSitAmet.view.settings.V_about": [],
+  "SemperSitAmet.view.settings.V_config_pin": [],
   "SemperSitAmet.view.settings.V_pins": [],
   "SemperSitAmet.view.settings.V_profiles": [],
   "SemperSitAmet.view.settings.V_settings": [],
@@ -1405,6 +1406,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "SemperSitAmet.view.settings.V_about": [
     "widget.settings_about"
+  ],
+  "SemperSitAmet.view.settings.V_config_pin": [
+    "widget.config_pin"
   ],
   "SemperSitAmet.view.settings.V_pins": [
     "widget.settings_pins"
