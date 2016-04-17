@@ -24,15 +24,6 @@ Ext.define('SemperSitAmet.controller.C_main', {
         var config_pins = Ext.JSON.decode(window.localStorage.getItem("config_pins"));
         var items = [];
 
-        /*
-        config_pins.forEach(function(config_pin){
-            if(config_pin !== null){
-                config_pin.width = '100%';
-                config_pin.labelWidth = '70%';
-                items.push(config_pin);
-            }
-        });*/
-
         items.push({
             xtype: 'panel',
             width: "100%",
@@ -43,7 +34,7 @@ Ext.define('SemperSitAmet.controller.C_main', {
             },
             defaults:{
                 flex:1,
-                height: "7em",
+                height: "8em",
                 margin: "0.2em 0.2em 0.2em 0.2em"
             },
             items:[
@@ -61,7 +52,7 @@ Ext.define('SemperSitAmet.controller.C_main', {
             width: "100%",
             defaults:{
                 flex:1,
-                height: "7em",
+                height: "8em",
                 margin: "0.2em 0.2em 0.2em 0.2em"
             },
             items:[
@@ -79,7 +70,7 @@ Ext.define('SemperSitAmet.controller.C_main', {
             width: "100%",
             defaults:{
                 flex:1,
-                height: "7em",
+                height: "8em",
                 margin: "0.2em 0.2em 0.2em 0.2em"
             },
             items:[
@@ -97,7 +88,7 @@ Ext.define('SemperSitAmet.controller.C_main', {
             width: "100%",
             defaults:{
                 flex:1,
-                height: "7em",
+                height: "8em",
                 margin: "0.2em 0.2em 0.2em 0.2em"
             },
             items:[
@@ -106,39 +97,41 @@ Ext.define('SemperSitAmet.controller.C_main', {
             ]
         });
 
-        config_pins[8].width = "100%";
-        items.push(config_pins[8]);
-
-        /*
         items.push({
-            xtype: 'button',
-            text:   'Elimina cookie "arduino_ip"',
-            margin: '10 0 0 0',
-            handler: function(){
-                window.localStorage.removeItem("arduino_ip");
-            }
-        });
-
-        items.push({
-            xtype: 'button',
-            text:   'Elimina cookie "config_pins"',
-            margin: '10 0 0 0',
-            handler: function(){
-                window.localStorage.removeItem("config_pins");
-            }
-        });
-
-        items.push({
-            xtype: 'button',
-            text: 'check scroll',
-            handler: function(){
-                if(!Ext.ComponentQuery.query("main")[0].scrolling)
-                    console.log("lo premo!");
+            xtype: 'panel',
+            layout: {
+                type: 'hbox',
+                align: 'center',
+                pack: 'center'
             },
-            margin: '10 0 0 0'
+            width: "100%",
+            defaults:{
+                flex:1,
+                height: "8em",
+                margin: "0.2em 0.2em 0.2em 0.2em"
+            },
+            items:[
+                config_pins[8],
+                {
+                    xtype: 'button',
+                    style: {
+                        background: "#EDAA02",
+                        color: "white",
+                        borderRadius: 0,
+                        border: "1px solid transparent",
+                        borderTopColor: "transparent",
+                        backgroundImage: "url(resources/images/icon_settings.png)",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center center",
+                        backgroundSize: "80px 80px"
+                    },
+                    handler: function(){
+                        Ext.ComponentQuery.query("settings")[0].reset();
+                        Ext.ComponentQuery.query("viewport panel[name=main_card]")[0].setActiveItem(1);
+                    }
+                }
+            ]
         });
-
-        */
 
         this_view.setItems(items);
 

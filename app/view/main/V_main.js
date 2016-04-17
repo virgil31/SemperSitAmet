@@ -196,9 +196,6 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                 config_pins[8],
                 {
                     xtype: 'button',
-                    //iconCls: 'settings',
-                    //style: 'background: #EDAA02; color: white; border-radius: 0px;border: 1px solid transparent; border-top-color: transparent;'+
-                    //        'background-position: center center; background-image: url(\'https://cdn2.iconfinder.com/data/icons/outline-signs/350/gear-512.png\');',
                     style: {
                         background: "#EDAA02",
                         color: "white",
