@@ -112,18 +112,18 @@ Ext.application({
         var config_pins = [];
         for(var i = 0 ; i<7; i++){
             config_pins.push({
-                xtype: "switch", //switch,pression_button,timed_button,monitor_temperature
+                xtype: "timed_button", //switch,pression_button,timed_button,monitor_temperature
                 pin: (i+3),
                 etichetta: "PIN_"+(i+3),
-                tempo: null,
+                tempo: 2000,
                 hidden: false
             });
         }
         config_pins.push({
-            xtype: "switch", //switch,pression_button,timed_button,monitor_temperature
+            xtype: "timed_button", //switch,pression_button,timed_button,monitor_temperature
             pin: 14,
             etichetta: "PIN_A0",
-            tempo: null,
+            tempo: 2000,
             hidden: false
         });
         config_pins.push({
@@ -133,6 +133,7 @@ Ext.application({
             tempo: null,
             hidden: false
         });
+
         window.localStorage.setItem("config_pins",Ext.JSON.encode(config_pins));
     },
 

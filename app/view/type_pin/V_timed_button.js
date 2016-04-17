@@ -2,6 +2,10 @@ Ext.define('SemperSitAmet.view.type_pin.V_timed_button', {
     extend: 'Ext.Button',
     xtype: 'timed_button',
 
+    config:{
+        style: 'background: #009EDB; color: white; border-radius: 0px;border: 1px solid transparent; border-top-color: transparent;'
+    },
+
     initialize : function() {
         this.callParent();
         this_view = this;

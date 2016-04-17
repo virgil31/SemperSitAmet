@@ -11,3 +11,8 @@
 .x-mask.x-has-message .x-loading-spinner-outer {
     height: 80px;
 }
+
+/*nascondo scroll bar per tutte le viste*/
+.x-scroll-indicator {
+    opacity: 0 !important;
+}

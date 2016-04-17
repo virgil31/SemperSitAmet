@@ -1879,7 +1879,8 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSet": "../../touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLResultSetRowList": "../../touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "../../touch/src/device/sqlite/Sencha.js",
-  "SemperSitAmet": "../../app"
+  "SemperSitAmet": "../../app",
+  "SemperSitAmet.view.main.V_main_XXX": "../../app/view/main/V_main_COPIA.js"
 });
 
 Ext.ClassManager.addNameAlternateMappings({
@@ -2510,7 +2511,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "SemperSitAmet.controller.C_utility": [],
   "SemperSitAmet.controller.C_welcome": [],
   "SemperSitAmet.view.main.V_main": [],
-  "SemperSitAmet.view.main.V_main_ORIGINAL": [],
+  "SemperSitAmet.view.main.V_main_XXX": [],
   "SemperSitAmet.view.settings.V_about": [],
   "SemperSitAmet.view.settings.V_config_pin": [],
   "SemperSitAmet.view.settings.V_pins": [],
@@ -3247,8 +3248,8 @@ Ext.ClassManager.addNameAliasMappings({
   "SemperSitAmet.view.main.V_main": [
     "widget.main"
   ],
-  "SemperSitAmet.view.main.V_main_ORIGINAL": [
-    "widget.main"
+  "SemperSitAmet.view.main.V_main_XXX": [
+    "widget.main_XXX"
   ],
   "SemperSitAmet.view.settings.V_about": [
     "widget.settings_about"

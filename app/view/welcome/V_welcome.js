@@ -148,8 +148,6 @@ Ext.define('SemperSitAmet.view.welcome.V_welcome', {
                                                                 }
                                                             }
                                                         },null,false,"192.168.1");
-
-
                                                     }
                                                 }
                                             }

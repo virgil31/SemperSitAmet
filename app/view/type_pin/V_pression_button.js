@@ -3,6 +3,10 @@ Ext.define('SemperSitAmet.view.type_pin.V_pression_button', {
     extend: 'Ext.Button',
     xtype: 'pression_button',
 
+    config:{
+        style: 'background: #008A00; color: white; border-radius: 0px;border: 1px solid transparent; border-top-color: transparent;'
+    },
+
     initialize : function() {
         this.callParent();
         this_view = this;

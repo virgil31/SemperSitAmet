@@ -5,6 +5,8 @@ Ext.define('SemperSitAmet.view.main.V_main', {
     config: {
         scrollable: true,
 
+        style: 'background: black',
+
         layout: {
             type: 'vbox',
             align: 'center'
@@ -15,7 +17,7 @@ Ext.define('SemperSitAmet.view.main.V_main', {
             {
                 docked: 'top',
                 xtype: 'titlebar',
-                title: 'Gestione Arduino',
+                title: 'Gestione Arduino'/*,
                 items:[
                     {
                         iconCls: 'settings',
@@ -27,8 +29,9 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                             }
                         }
                     }
-                ]
-            }/*,
+                ]*/
+            }
+            /*,
             {
                 xtype: 'button',
                 text: 'Salva configurazione',
@@ -79,10 +82,22 @@ Ext.define('SemperSitAmet.view.main.V_main', {
         this.callParent();
         this_view = this;
 
+        //per evitare di cliccare sui bottoni durante lo scrolling mi devo mettere da parte
+        //una variabile che mi dice se sto scrollando nella view
+        this_view.scrolling = false;
+        this_view.getScrollable()._scroller.on('scrollstart', function() {
+            this_view.scrolling = true;
+        });
+        this_view.getScrollable()._scroller.on('scrollend', function() {
+            this_view.scrolling = false;
+        });
+
+
         if(window.localStorage.getItem("config_pins")===null) SemperSitAmet.app.inizializzoBottoni();
         var config_pins = Ext.JSON.decode(window.localStorage.getItem("config_pins"));
         var items = [];
 
+        /*
         config_pins.forEach(function(config_pin){
             if(config_pin !== null){
                 config_pin.width = '100%';
@@ -90,6 +105,123 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                 items.push(config_pin);
             }
         });
+        */
+        items.push({
+            xtype: 'panel',
+            width: "100%",
+            layout: {
+                type: 'hbox',
+                align: 'center',
+                pack: 'center'
+            },
+            defaults:{
+                flex:1,
+                height: "8em",
+                margin: "0.2em 0.2em 0.2em 0.2em"
+            },
+            items:[
+                config_pins[0],
+                config_pins[1]
+            ]
+        });
+        items.push({
+            xtype: 'panel',
+            layout: {
+                type: 'hbox',
+                align: 'center',
+                pack: 'center'
+            },
+            width: "100%",
+            defaults:{
+                flex:1,
+                height: "8em",
+                margin: "0.2em 0.2em 0.2em 0.2em"
+            },
+            items:[
+                config_pins[2],
+                config_pins[3]
+            ]
+        });
+        items.push({
+            xtype: 'panel',
+            layout: {
+                type: 'hbox',
+                align: 'center',
+                pack: 'center'
+            },
+            width: "100%",
+            defaults:{
+                flex:1,
+                height: "8em",
+                margin: "0.2em 0.2em 0.2em 0.2em"
+            },
+            items:[
+                config_pins[4],
+                config_pins[5]
+            ]
+        });
+        items.push({
+            xtype: 'panel',
+            layout: {
+                type: 'hbox',
+                align: 'center',
+                pack: 'center'
+            },
+            width: "100%",
+            defaults:{
+                flex:1,
+                height: "8em",
+                margin: "0.2em 0.2em 0.2em 0.2em"
+            },
+            items:[
+                config_pins[6],
+                config_pins[7]
+            ]
+        });
+
+        items.push({
+            xtype: 'panel',
+            layout: {
+                type: 'hbox',
+                align: 'center',
+                pack: 'center'
+            },
+            width: "100%",
+            defaults:{
+                flex:1,
+                height: "8em",
+                margin: "0.2em 0.2em 0.2em 0.2em"
+            },
+            items:[
+                config_pins[8],
+                {
+                    xtype: 'button',
+                    //iconCls: 'settings',
+                    //style: 'background: #EDAA02; color: white; border-radius: 0px;border: 1px solid transparent; border-top-color: transparent;'+
+                    //        'background-position: center center; background-image: url(\'https://cdn2.iconfinder.com/data/icons/outline-signs/350/gear-512.png\');',
+                    style: {
+                        background: "#EDAA02",
+                        color: "white",
+                        borderRadius: 0,
+                        border: "1px solid transparent",
+                        borderTopColor: "transparent",
+                        backgroundImage: "url(resources/images/icon_settings.png)",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center center",
+                        backgroundSize: "80px 80px"
+                    },
+                    handler: function(){
+                        Ext.ComponentQuery.query("settings")[0].reset();
+                        Ext.ComponentQuery.query("viewport panel[name=main_card]")[0].setActiveItem(1);
+                    }
+                }
+            ]
+        });
+
+        //config_pins[8].width = "100%";
+        //items.push(config_pins[8]);
+
+        /*
 
         items.push({
             xtype: 'button',
@@ -108,6 +240,16 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                 window.localStorage.removeItem("config_pins");
             }
         });
+
+        items.push({
+            xtype: 'button',
+            text: 'check scroll',
+            handler: function(){
+                if(!Ext.ComponentQuery.query("main")[0].scrolling)
+                    console.log("lo premo!");
+            },
+            margin: '10 0 0 0'
+        });*/
 
         this_view.setItems(items);
     }
