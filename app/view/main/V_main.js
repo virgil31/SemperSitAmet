@@ -200,7 +200,7 @@ Ext.define('SemperSitAmet.view.main.V_main', {
                         background: "#EDAA02",
                         color: "white",
                         borderRadius: 0,
-                        border: "1px solid transparent",
+                        border: "0px solid transparent",
                         borderTopColor: "transparent",
                         backgroundImage: "url(resources/images/icon_settings.png)",
                         backgroundRepeat: "no-repeat",

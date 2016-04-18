@@ -4,7 +4,7 @@ Ext.define('SemperSitAmet.view.type_pin.V_pression_button', {
     xtype: 'pression_button',
 
     config: {
-        style: 'background: #008A00; color: white; border-radius: 0px;border: 1px solid transparent; border-top-color: transparent;background-image: url(resources/images/icon_led.png); background-repeat: no-repeat; background-position: center 40%; background-size: 80px 80px;'
+        style: 'background: #008A00; color: white; border-radius: 0px;border: 0px solid transparent; border-top-color: transparent;background-image: url(resources/images/icon_led.png); background-repeat: no-repeat; background-position: center 40%; background-size: 80px 80px;'
     },
 
     initialize : function() {
@@ -22,7 +22,8 @@ Ext.define('SemperSitAmet.view.type_pin.V_pression_button', {
         this_view.setLabelCls("x-button-label etichetta_bottone");
 
         this_view.setListeners({
-            touchstart: function(){
+            touchstart: function(btn){
+                btn.setStyle("box-shadow: inset 0px 0px 0px 5px #006100");
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function(){
                     if (xhttp.readyState == 4 && xhttp.status == 200){
@@ -33,6 +34,7 @@ Ext.define('SemperSitAmet.view.type_pin.V_pression_button', {
                 xhttp.send();
             },
             release: function(btn){
+                btn.setStyle("box-shadow: inset 0px 0px 0px 5px #008A00");
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function(){
                     if (xhttp.readyState == 4 && xhttp.status == 200){
