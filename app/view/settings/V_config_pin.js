@@ -47,6 +47,17 @@ Ext.define('SemperSitAmet.view.settings.V_config_pin', {
             },
             {
                 xtype: 'selectfield',
+                label: 'Icona',
+                name: 'icona',
+                options: [
+                    {text: 'Led',           value: 'resources/images/icon_led.png'},
+                    {text: 'Termometro',    value: 'resources/images/icon_temperature.png'},
+                    {text: 'OK',            value: 'resources/images/icon_ok.png'},
+                    {text: 'Logo EiS',      value: 'resources/images/logo_eis.png'}
+                ]
+            },
+            {
+                xtype: 'selectfield',
                 name: 'hidden',
                 label: 'Mostra?',
                 options: [
@@ -70,6 +81,7 @@ Ext.define('SemperSitAmet.view.settings.V_config_pin', {
                     window.localStorage.setItem("config_pins",Ext.JSON.encode(config_pins));
 
                     this.up("navigationview").pop();
+
                     //infine refresho la vista main
                     SemperSitAmet.app.getController("C_main").refreshView();
                 }

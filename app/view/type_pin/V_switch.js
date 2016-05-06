@@ -2,9 +2,9 @@ Ext.define('SemperSitAmet.view.type_pin.V_switch', {
     extend: 'Ext.Button',
     xtype: 'switch',
 
-    config:{
+    /*config:{
         style: 'background: #3D5B99; color: white; border-radius: 0px;border: 0px solid transparent; border-top-color: transparent;background-image: url(resources/images/icon_led.png); background-repeat: no-repeat; background-position: center 40%; background-size: 80px 80px;'
-    },
+    },*/
 
     initialize : function() {
         this.callParent();
@@ -14,10 +14,13 @@ Ext.define('SemperSitAmet.view.type_pin.V_switch', {
 
         var pin = this_view.config.pin;
         var tempo = this_view.config.tempo;
+        var icona = this_view.config.icona;
 
         this_view.setText(this_view.config.etichetta)
 
         this_view.setLabelCls("x-button-label etichetta_bottone");
+
+        this_view.setStyle("background: #3D5B99; color: white; border-radius: 0px;border: 0px solid transparent; border-top-color: transparent;background-image: url("+icona+"); background-repeat: no-repeat; background-position: center 40%; background-size: 80px 80px;");
 
         this_view.setListeners({
             tap: function(btn){

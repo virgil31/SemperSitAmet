@@ -116,7 +116,8 @@ Ext.application({
                 pin: (i+3),
                 etichetta: "PIN_"+(i+3),
                 tempo: 2000,
-                hidden: false
+                hidden: false,
+                icona: "resources/images/icon_led.png"
             });
         }
         config_pins.push({
@@ -124,14 +125,16 @@ Ext.application({
             pin: 14,
             etichetta: "PIN_A0",
             tempo: 2000,
-            hidden: false
+            hidden: false,
+            icona: "resources/images/icon_led.png"
         });
         config_pins.push({
             xtype: "monitor_temperature", //switch,pression_button,timed_button,monitor_temperature
             pin: 15,
             etichetta: "PIN_A1",
             tempo: null,
-            hidden: false
+            hidden: false,
+            icona: "resources/images/icon_temperature.png"
         });
 
         window.localStorage.setItem("config_pins",Ext.JSON.encode(config_pins));
